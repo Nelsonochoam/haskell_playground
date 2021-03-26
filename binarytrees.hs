@@ -27,7 +27,24 @@ mapTree f (Node left a right) =
   Node (mapTree f left) (f a) (mapTree f right)
 
 
--- Testing
+-- Root Left Right
+preorder :: BTree a -> [a]
+preorder Leaf = []
+preorder (Node l a r) = a : preorder l ++ preorder r
+
+-- Left Root Right
+inorder :: BTree a ->  [a]
+inorder Leaf = []
+inorder (Node l a r) =  inorder l ++ [a] ++ inorder r
+
+-- Left Right Root
+postorder :: BTree a -> [a]
+postorder Leaf = []
+postorder (Node l a r) = postorder l ++ postorder r ++ [a]
+
+
+
+-- Testing Tree
 
 testTree :: BTree Integer
 testTree =
